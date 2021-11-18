@@ -1,0 +1,6 @@
+SELECT Schedule.classroom
+FROM Schedule
+GROUP BY Schedule.classroom
+HAVING COUNT(*) = (SELECT MAX(Maxclass)
+FROM (SELECT COUNT(Schedule.classroom) AS Maxclass FROM Schedule
+GROUP BY Schedule.classroom) query_in)
